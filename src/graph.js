@@ -22,6 +22,10 @@ const bfs = function (pairs, source, target) {
   if (!(source in links)) {
     return false;
   }
+  if (links[source].includes(target)) {
+    return true;
+  }
+  return false;
 };
 
 module.exports = { bfs, createGraphList };

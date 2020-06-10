@@ -43,4 +43,16 @@ describe("BFS", function () {
     ];
     assert.isFalse(bfs(data, "d", "a"));
   });
+  it("should return true if the destination is present in source list", function () {
+    let data = [
+      ["a", "a"],
+      ["a", "b"],
+      ["a", "c"],
+      ["b", "a"],
+      ["b", "c"],
+      ["c", "a"],
+      ["c", "d"],
+    ];
+    assert.isTrue(bfs(data, "a", "c"));
+  });
 });
