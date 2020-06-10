@@ -55,4 +55,41 @@ describe("BFS", function () {
     ];
     assert.isTrue(bfs(data, "a", "c"));
   });
+  it("should return true if the destination is  source when source is circularly linked to self", function () {
+    let data = [
+      ["a", "a"],
+      ["a", "b"],
+      ["a", "c"],
+      ["b", "a"],
+      ["b", "c"],
+      ["c", "a"],
+      ["c", "d"],
+    ];
+    assert.isTrue(bfs(data, "a", "a"));
+  });
+
+  it("should not validate if the destination is source when source is not circularly linked to self", function () {
+    let data = [
+      ["a", "a"],
+      ["a", "b"],
+      ["a", "c"],
+      ["b", "a"],
+      ["b", "c"],
+      ["c", "a"],
+      ["c", "d"],
+    ];
+    assert.isFalse(bfs(data, "c", "c"));
+  });
+  it("should validate if the destination is linked to source via one node", function () {
+    let data = [
+      ["a", "a"],
+      ["a", "b"],
+      ["a", "c"],
+      ["b", "a"],
+      ["b", "c"],
+      ["c", "a"],
+      ["c", "d"],
+    ];
+    assert.isFalse(bfs(data, "c", "b"));
+  });
 });
