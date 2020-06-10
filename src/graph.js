@@ -17,6 +17,11 @@ const createGraphList = function (data) {
   return list;
 };
 
-const bfs = function (pairs, source, target) {};
+const bfs = function (pairs, source, target) {
+  let links = createGraphList(pairs);
+  if (!(source in links)) {
+    return false;
+  }
+};
 
 module.exports = { bfs, createGraphList };
