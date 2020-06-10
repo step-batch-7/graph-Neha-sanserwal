@@ -16,10 +16,12 @@ const createGraphList = function (data) {
   }
   return list;
 };
-let visitedNodes = [];
-const bfs = function (pairs, source, target) {
-  let links = createGraphList(pairs);
+
+const search = function (links, source, target, visitedNodes) {
   if (!(source in links)) {
+    return false;
+  }
+  if (source == target && !links[source].includes(target)) {
     return false;
   }
   if (links[source].includes(target)) {
@@ -29,10 +31,15 @@ const bfs = function (pairs, source, target) {
   visitedNodes.push(source);
   for (const newSource of links[source]) {
     if (!visitedNodes.includes(newSource)) {
-      return bfs(newSource, target);
+      return search(links, newSource, target, visitedNodes);
     }
   }
   return false;
+};
+const bfs = function (pairs, source, target) {
+  let visitedNodes = [];
+  let links = createGraphList(pairs);
+  return search(links, source, target, visitedNodes);
 };
 
 module.exports = { bfs, createGraphList };

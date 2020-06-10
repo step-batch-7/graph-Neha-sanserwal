@@ -1,4 +1,5 @@
 const assert = require("chai").assert;
+const testData = require("./testData.json");
 const { createGraphList, bfs } = require("../src/graph");
 describe("createGraphList", function () {
   it("should create json of possible paths array of array", function () {
@@ -90,6 +91,6 @@ describe("BFS", function () {
       ["c", "a"],
       ["c", "d"],
     ];
-    assert.isFalse(bfs(data, "c", "b"));
+    assert.isTrue(bfs(data, "c", "b"));
   });
 });
