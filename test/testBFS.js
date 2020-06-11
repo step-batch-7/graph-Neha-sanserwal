@@ -93,4 +93,16 @@ describe("BFS", function () {
     ];
     assert.isTrue(bfs(data, "c", "b"));
   });
+
+  it("should not validate if the destination is not linked to source via any node", function () {
+    let data = [
+      ["a", "b"],
+      ["a", "c"],
+      ["a", "d"],
+      ["c", "b"],
+      ["d", "e"],
+      ["e", "c"],
+    ];
+    assert.isFalse(bfs(data, "e", "a"));
+  });
 });
