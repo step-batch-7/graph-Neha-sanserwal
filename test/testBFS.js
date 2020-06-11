@@ -70,7 +70,7 @@ describe("BFS", function () {
   });
 
   it("should not validate if the destination is source when source is not circularly linked to self", function () {
-    assert.isFalse(bfs(testData, "g", "g"));
+    assert.isFalse(bfs(testData, "j", "j"));
   });
   it("should validate if the destination is linked to source via one node", function () {
     assert.isTrue(bfs(testData, "j", "a"));

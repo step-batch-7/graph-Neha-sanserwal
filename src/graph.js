@@ -16,29 +16,23 @@ const createGraphList = function (data) {
   }
   return list;
 };
-const enqueue = function (pairs, node_to_search, queue, visitedNodes) {
-  pairs[node_to_search] &&
-    pairs[node_to_search].map((link) => {
+const enqueue = function (graph, node_to_search, queue, visitedNodes) {
+  graph[node_to_search] &&
+    graph[node_to_search].map((link) => {
       if (!queue.includes(link) && !visitedNodes.includes(link)) {
         queue.push(link);
       }
     });
 };
-const search = function (pairs, source, target, visitedNodes, queue) {
-  if (!(source in pairs)) {
-    return false;
-  }
-  if (source == target && !pairs[source].includes(target)) {
-    return false;
-  }
+const search = function (graph, source, target, visitedNodes, queue) {
   queue.push(source);
   while (queue.length != 0) {
     let node_to_search = queue.shift();
-    if (pairs[node_to_search] && pairs[node_to_search].includes(target)) {
+    if (graph[node_to_search] && graph[node_to_search].includes(target)) {
       return true;
     }
     visitedNodes.push(node_to_search);
-    enqueue(pairs, node_to_search, queue, visitedNodes);
+    enqueue(graph, node_to_search, queue, visitedNodes);
   }
   return false;
 };
