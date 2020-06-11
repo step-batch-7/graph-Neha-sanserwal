@@ -49,4 +49,5 @@ const bfs = function (pairs, source, target) {
   let links = createGraphList(pairs);
   return search(links, source, target, visitedNodes, queue);
 };
+
 module.exports = { bfs, createGraphList };
